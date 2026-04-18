@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Subwoofer Listing</title>
+<title>bassersaq's sub 4 sale</title>
+<link rel="icon" type="image/png" href="sub.jpg">
 <style>
     * {
         margin: 0;
@@ -32,10 +33,17 @@
         z-index: 2;
         height: 100vh;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 20px;
+    }
+
+    .wrapper {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .card {
@@ -53,6 +61,29 @@
     }
 
     .card:hover {
+        transform: scale(1.05);
+    }
+
+    .image {
+        width: 320px;
+        max-width: 90vw;
+        border-radius: 24px;
+        backdrop-filter: blur(30px) saturate(180%);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        transition: 0.25s ease;
+        overflow: hidden;
+    }
+
+    .image img {
+        width: 100%;
+        display: block;
+        border-radius: 24px;
+        transition: 0.3s ease;
+    }
+
+    .image:hover img {
         transform: scale(1.05);
     }
 
@@ -135,10 +166,20 @@
         padding-bottom: 4px;
     }
 
+    @media (max-width: 900px) {
+        .wrapper {
+            flex-direction: column;
+        }
+    }
+
     @media (max-width: 500px) {
         .card {
             width: 92vw;
             padding: 20px;
+        }
+
+        .image {
+            width: 92vw;
         }
 
         .title {
@@ -156,27 +197,34 @@
 <canvas id="matrix"></canvas>
 
 <div class="overlay">
-    <div class="card">
-        <div class="title">GAS Audio Subwoofer Setup</div>
-        <div class="price">€390</div>
-        <div class="subprice">For the sub alone: €390</div>
-        <div class="subprice">For the box alone: €150</div>
+    <div class="wrapper">
 
-        <div class="specs">
-            15 inch subwoofer<br>
-            2500W RMS / 5000W MAX<br>
-            Deep bass focused build<br>
-            Full setup value approx: €750<br>
-            GAS MAX S2-15D2 btw
+        <div class="image">
+            <img src="sub.jpg" alt="Subwoofer Image" />
         </div>
 
-        <a href="https://www.tiktok.com/@rebassedz" target="_blank">
-            <button>Contact Seller</button>
-        </a>
+        <div class="card">
+            <div class="title">GAS Audio Subwoofer Setup</div>
+            <div class="price">€390</div>
+            <div class="subprice">For the sub alone: €390</div>
+            <div class="subprice">For the box alone: €150</div>
 
-        <div style="margin-top:10px; font-size:11px; opacity:0.6;">
-            Email: <a href="mailto:thebassersaq@gmail.com" style="color:#00ff99; text-decoration:none;">thebassersaq@gmail.com</a>
+            <div class="specs">
+                15 inch subwoofer<br>
+                2500W RMS / 5000W MAX<br>
+                Deep bass focused build<br>
+                Full setup value approx: €750
+            </div>
+
+            <a href="https://www.tiktok.com/@rebassedz" target="_blank">
+                <button>Contact Seller</button>
+            </a>
+
+            <div style="margin-top:10px; font-size:11px; opacity:0.6;">
+                Email: <a href="mailto:thebassersaq@gmail.com" style="color:#00ff99; text-decoration:none;">thebassersaq@gmail.com</a>
+            </div>
         </div>
+
     </div>
 </div>
 
@@ -198,7 +246,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const letters = "POWEREDBYXCCFORBASSERSAQ";
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array.from({ length: columns }).fill(1);
