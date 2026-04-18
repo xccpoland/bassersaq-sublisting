@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>bassersaq's sub 4 sale</title>
+<title>Subwoofer Listing</title>
 <link rel="icon" type="image/png" href="sub.png">
 <style>
     * {
@@ -113,7 +113,7 @@
     }
 
     button {
-        margin-top: 15px;
+        margin-top: 12px;
         padding: 10px 15px;
         border: none;
         border-radius: 12px;
@@ -122,42 +122,21 @@
         cursor: pointer;
         font-weight: bold;
         transition: 0.2s;
+        width: 100%;
     }
 
     button:hover {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
 
-    .dock {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 12px;
-        padding: 10px 20px;
-        border-radius: 24px;
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255,255,255,0.1);
-        z-index: 3;
-    }
-
-    .dock-item {
-        width: 42px;
-        height: 42px;
-        border-radius: 14px;
-        background: rgba(255,255,255,0.15);
-        transition: 0.2s;
-    }
-
-    .dock-item:hover {
-        transform: scale(1.35);
+    .discord {
+        background: rgba(88, 101, 242, 0.9);
+        color: white;
     }
 
     .footer {
         position: fixed;
-        bottom: 5px;
+        bottom: 6px;
         width: 100%;
         text-align: center;
         font-size: 10px;
@@ -200,7 +179,7 @@
     <div class="wrapper">
 
         <div class="image">
-            <img src="sub.png" alt="Subwoofer Image" />
+            <img src="sub.jpg" alt="Subwoofer Image" />
         </div>
 
         <div class="card">
@@ -217,7 +196,11 @@
             </div>
 
             <a href="https://www.tiktok.com/@rebassedz" target="_blank">
-                <button>Contact Seller</button>
+                <button>Contact TikTok</button>
+            </a>
+
+            <a href="https://discord.gg/EYxxDJTNrE" target="_blank">
+                <button class="discord">Join Discord</button>
             </a>
 
             <div style="margin-top:10px; font-size:11px; opacity:0.6;">
@@ -226,13 +209,6 @@
         </div>
 
     </div>
-</div>
-
-<div class="dock">
-    <div class="dock-item"></div>
-    <div class="dock-item"></div>
-    <div class="dock-item"></div>
-    <div class="dock-item"></div>
 </div>
 
 <div class="footer">
