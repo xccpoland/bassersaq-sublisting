@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Subwoofer Listing</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+    }
+
+    body {
+        height: 100vh;
+        overflow: hidden;
+        color: white;
+        background: radial-gradient(circle at top, #1a1a1a, #000000);
+    }
+
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        opacity: 0.35;
+    }
+
+    .overlay {
+        position: relative;
+        z-index: 2;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        padding: 28px;
+        width: 380px;
+        max-width: 95vw;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        transition: 0.25s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .price {
+        font-size: 26px;
+        margin: 8px 0;
+        color: #00ff99;
+    }
+
+    .subprice {
+        font-size: 14px;
+        opacity: 0.9;
+        margin: 6px 0;
+    }
+
+    .specs {
+        font-size: 14px;
+        opacity: 0.85;
+        line-height: 1.5;
+        margin-top: 10px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 12px;
+        background: rgba(0, 255, 153, 0.9);
+        color: black;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.08);
+    }
+
+    .dock {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        padding: 10px 20px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.1);
+        z-index: 3;
+    }
+
+    .dock-item {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.15);
+        transition: 0.2s;
+    }
+
+    .dock-item:hover {
+        transform: scale(1.35);
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 5px;
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        opacity: 0.5;
+        z-index: 3;
+        padding-bottom: 4px;
+    }
+
+    @media (max-width: 500px) {
+        .card {
+            width: 92vw;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 22px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="overlay">
+    <div class="card">
+        <div class="title">GAS Audio Subwoofer Setup</div>
+        <div class="price">€390</div>
+        <div class="subprice">For the sub alone: €390</div>
+        <div class="subprice">For the box alone: €150</div>
+
+        <div class="specs">
+            15 inch subwoofer<br>
+            2500W RMS / 5000W MAX<br>
+            Deep bass focused build<br>
+            Full setup value approx: €750<br>
+            GAS MAX S2-15D2 btw
+        </div>
+
+        <a href="https://www.tiktok.com/@rebassedz" target="_blank">
+            <button>Contact Seller</button>
+        </a>
+
+        <div style="margin-top:10px; font-size:11px; opacity:0.6;">
+            Email: <a href="mailto:thebassersaq@gmail.com" style="color:#00ff99; text-decoration:none;">thebassersaq@gmail.com</a>
+        </div>
+    </div>
+</div>
+
+<div class="dock">
+    <div class="dock-item"></div>
+    <div class="dock-item"></div>
+    <div class="dock-item"></div>
+    <div class="dock-item"></div>
+</div>
+
+<div class="footer">
+    Made by XCC - enduro.olimp on tt
+</div>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "POWEREDBYXCCFORBASSERSAQ";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({ length: columns }).fill(1);
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ff99";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 33);
+</script>
+
+</body>
+</html>
