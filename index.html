@@ -179,7 +179,7 @@
     <div class="wrapper">
 
         <div class="image">
-            <img src="sub.jpg" alt="Subwoofer Image" />
+            <img src="sub.png" alt="Subwoofer Image" />
         </div>
 
         <div class="card">
@@ -204,8 +204,9 @@
             </a>
 
             <div style="margin-top:10px; font-size:11px; opacity:0.6;">
-                Email: <a href="mailto:thebassersaq@gmail.com" style="color:#00ff99; text-decoration:none;">thebassersaq@gmail.com</a>
-            </div>
+                <button id="copyEmailBtn" onclick="copyEmail()" style="margin-top:10px; padding:10px 12px; border:none; border-radius:12px; background:rgba(0,255,153,0.9); color:black; font-weight:bold; cursor:pointer; width:100%; transition:0.2s;">
+Copy email
+</button>
         </div>
 
     </div>
@@ -222,7 +223,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const letters = "POWEREDBYXCCFORBASSERSAQ";
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array.from({ length: columns }).fill(1);
@@ -246,6 +247,18 @@ function draw() {
 }
 
 setInterval(draw, 33);
+function copyEmail() {
+    const email = "thebassersaq@gmail.com";
+    navigator.clipboard.writeText(email);
+
+    const btn = document.getElementById("copyEmailBtn");
+    const oldText = btn.innerText;
+    btn.innerText = "Copied twin!";
+
+    setTimeout(() => {
+        btn.innerText = oldText;
+    }, 1200);
+}
 </script>
 
 </body>
